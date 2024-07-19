@@ -1,5 +1,5 @@
 const postUser = async (email, password) => {
-    const response = await fetch(`http://localhost:3000/users`,
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/users`,
         {
             method:'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -11,7 +11,7 @@ const postUser = async (email, password) => {
 }
 
 const postLogin = async (email, password) => {
-    const response = await fetch(`http://localhost:3000/login`,
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`,
         {
             method:'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,7 @@ const postLogin = async (email, password) => {
 }
 
 const putYourPhoto = async (id, imagen) => {
-    const response = await fetch(`http://localhost:3000/users`,
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/users`,
         {
             method:'PUT',
             headers: { 'Content-Type': 'application/json' },

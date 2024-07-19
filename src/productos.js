@@ -1,6 +1,6 @@
 const getProductosHome = async (categoria, setProductos) => {
     const response = await fetch(
-        `http://localhost:3000/home?categoria=${categoria}`
+        `${import.meta.env.VITE_BACKEND_URL}/home?categoria=${categoria}`
     )
     const { productos, total} = await response.json()
     if(total !== 0 && total){
@@ -12,7 +12,7 @@ const getProductosHome = async (categoria, setProductos) => {
 
 const getProductos = async (categoria, page = 1, order='ASC', limit = 10, setProductos, setTotalPages, setNext, setPrevious, setTotal) => {
     const response = await fetch(
-        `http://localhost:3000/categorias?categoria=${categoria}&page=${page}&limit=${limit}&order=${order}`
+        `${import.meta.env.VITE_BACKEND_URL}/categorias?categoria=${categoria}&page=${page}&limit=${limit}&order=${order}`
     )
     const { results, total_pages, next, previous, total } = await response.json()
     if(total !== 0 && total){
@@ -26,7 +26,7 @@ const getProductos = async (categoria, page = 1, order='ASC', limit = 10, setPro
 
 const getProductosSearch = async (page = 1, order='ASC', limit = 10, search = '', setProductos, setTotalPages, setNext, setPrevious, setTotal) => {
     const response = await fetch(
-        `http://localhost:3000/search?search=${search}&page=${page}&limit=${limit}&order=${order}`
+        `${import.meta.env.VITE_BACKEND_URL}/search?search=${search}&page=${page}&limit=${limit}&order=${order}`
     )
     const { results, total_pages, next, previous, total } = await response.json()
     if(total !== 0 && total){
@@ -42,7 +42,7 @@ const getProductosSearch = async (page = 1, order='ASC', limit = 10, search = ''
 
 const getProductobyId = async (id, setProducto) => {
     const response = await fetch(
-        `http://localhost:3000/productos/${id}`
+        `${import.meta.env.VITE_BACKEND_URL}/productos/${id}`
     )
     const productobyId = await response.json()
     setProducto(productobyId)
@@ -51,7 +51,7 @@ const getProductobyId = async (id, setProducto) => {
 
 const getProductosIdUsuario = async (page = 1, order='ASC', limit = 10, id_usuario, setProductos, setTotalPages, setNext, setPrevious, setTotal) => {
     const response = await fetch(
-        `http://localhost:3000/productosusuario?id_usuario=${id_usuario}&page=${page}&limit=${limit}&order=${order}`
+        `${import.meta.env.VITE_BACKEND_URL}/productosusuario?id_usuario=${id_usuario}&page=${page}&limit=${limit}&order=${order}`
     )
     const { results, total_pages, next, previous, total } = await response.json()
     if(total !== 0 && total){
@@ -67,7 +67,7 @@ const getProductosIdUsuario = async (page = 1, order='ASC', limit = 10, id_usuar
 
 const postProducto = async (id_usuario, nombre, imagen, descripcion, precio, categoria, cantidad, token) => {
     const code = 'Bearer ' +  token
-    const response = await fetch(`http://localhost:3000/productos`,
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/productos`,
         {
             method:'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': code },
@@ -80,7 +80,7 @@ const postProducto = async (id_usuario, nombre, imagen, descripcion, precio, cat
 
 const deleteProducto = async (id, token) => {
     const code = 'Bearer ' + token
-    await fetch(`http://localhost:3000/productos/${id}`,
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/productos/${id}`,
         {
             method:'DELETE',
             headers: { 'Content-Type': 'application/json', 'Authorization': code },
@@ -91,7 +91,7 @@ const deleteProducto = async (id, token) => {
 
 const putProductoPrice = async (id, precio, token) => {
     const code = 'Bearer ' + token
-    await fetch(`http://localhost:3000/productos/${id}?precio=${precio}`,
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/productos/${id}?precio=${precio}`,
         {
             method:'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': code },
@@ -101,14 +101,14 @@ const putProductoPrice = async (id, precio, token) => {
 }
 
 const getLikes = async (id, setLikes) => {
-    const response = await fetch(`http://localhost:3000/likes/${id}`)
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/likes/${id}`)
     const likes = await response.json()
     setLikes(likes.likes)
 }
 
 const putLikes = async (id, id_usuario, setLikes, token) => {
     const code = 'Bearer ' + token
-    const response = await fetch(`http://localhost:3000/likes/${id}`,
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/likes/${id}`,
         {
             method:'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': code },
