@@ -62,7 +62,7 @@ const UsersPage = () => {
               }
               {
                 alerta ?
-                <h5 className='text-danger'>Las contraseñas no coinciden o tienen menos de 10 dígitos</h5>
+                <h5 className='text-danger'>Las contraseñas no coinciden o tienen menos de 3 dígitos</h5>
                   :
                  null 
               }
