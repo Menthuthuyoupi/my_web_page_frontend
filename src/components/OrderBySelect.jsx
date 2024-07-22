@@ -7,7 +7,7 @@ const OrderBySelect = ({setOrder}) => {
     setOrder(order)
   }
   return (
-    <Form.Select onChange={({target}) => orderSelected(target.value)} aria-label="Default select example" style={{width:'200px'}}>
+    <Form.Select defaultValue={'ASC'} onChange={({target}) => orderSelected(target.value)} aria-label="Default select example" style={{width:'200px'}}>
         <option disabled>Ordenador por</option>
         <option value="ASC">Precio Ascendiente</option>
         <option value="DESC">Precio Descendiente</option>

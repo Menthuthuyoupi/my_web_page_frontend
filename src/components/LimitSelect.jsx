@@ -9,7 +9,7 @@ const LimitSelect = ({setLimit}) => {
   return (
     <Container className='d-flex '>
         <p className='m-0 me-2 py-2' style={{fontSize:'12px'}}>Items por pág</p>
-        <Form.Select defaultValue={'2'} onChange={({target}) => limitSelected(target.value)}
+        <Form.Select defaultValue={'5'} onChange={({target}) => limitSelected(target.value)}
         className='py-2' aria-label="Default select example" style={{width:'70px'}}>
             <option disabled>1</option>
             <option value="5">5</option>
