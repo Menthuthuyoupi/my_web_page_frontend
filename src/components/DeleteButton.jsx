@@ -12,7 +12,10 @@ import { deleteProducto } from '../productos';
 const DeleteButton = ({id}) => {
   const { loggedIn } = useContext(LoggedInContext)
   const eliminarProducto = () => {
+    const confirmar = confirm('Estas seguro de eliminar tu producto?')
+    if(confirmar){
       deleteProducto(id, loggedIn.token)
+    }
   }
 
   return (

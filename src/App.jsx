@@ -17,6 +17,7 @@ import LoginPage from './views/LoginPage'
 import UsersPage from './views/UsersPage'
 
 import PerfilPage from './views/PerfilPage'
+import MisComprasPage from './views/MisComprasPage'
 import PayPage from './views/PayPage'
 import MisPublicacionesPage from './views/MisPublicacionesPage'
 import PublicarPage from './views/PublicarPage'
@@ -36,12 +37,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route path="/users" element={<UsersPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={loggedIn.logged ? <HomePage /> : <LoginPage />} />
 
         <Route path="/perfil" element={loggedIn.logged ? <PerfilPage /> : <AccessDenied />} />
+
         <Route path="/perfil/pagar" element={loggedIn.logged ? <PayPage /> : <AccessDenied />} />
         <Route path="/perfil/mispublicaciones" element={loggedIn.logged ? <MisPublicacionesPage /> : <AccessDenied />} />
         <Route path="/perfil/publicar" element={loggedIn.logged ? <PublicarPage /> : <AccessDenied />} />
+        <Route path="/perfil/miscompras" element={loggedIn.logged ? <MisComprasPage /> : <AccessDenied />} />
         
         <Route path="/search" element={<SearchPage />} />
 

@@ -89,9 +89,9 @@ const deleteProducto = async (id, token) => {
     )
 }
 
-const putProductoPrice = async (id, precio, token) => {
+const putProduct = async (id, precio, cantidad, descripcion, url_imagen, nombre, token) => {
     const code = 'Bearer ' + token
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/productos/${id}?precio=${precio}`,
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/productos/${id}?precio=${precio}&cantidad=${cantidad}&descripcion=${descripcion}&url_imagen=${url_imagen}&nombre=${nombre}`,
         {
             method:'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': code },
@@ -119,6 +119,26 @@ const putLikes = async (id, id_usuario, setLikes, token) => {
     setLikes(likes.likes)
 }
 
+const postMisCompras = async (id, id_usuario, imagen, nombre, cantidad, token) => {
+    const code = 'Bearer ' + token
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/miscompras/${id}`,
+        {
+            method:'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': code },
+            body: JSON.stringify({id_usuario: id_usuario, nombre: nombre, imagen: imagen , cantidad: cantidad})
+        }
+    )
+    const { message } = await response.json()
+    return message
+}
+
+const getMisCompras = async (id, setMisCompras) => {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/miscompras/${id}`)
+
+    const result = await response.json()
+    setMisCompras(result)
+}
+
 export {                            //                          METODO      RUTA                                       TOKEN
     getProductos,                   //productos-categorias      ->GET       '/categorias'            **     publica
     getProductosHome,               //productos-home            ->GET       '/home'                  **     publica
@@ -127,7 +147,9 @@ export {                            //                          METODO      RUTA
     getProductobyId,                //productos-id-get          ->GET       '/producto/:id'          **     publica
     postProducto,                   //publicar                  ->POST      '/productos'             **     PRIVADA     **
     deleteProducto,                 //mispublicaciones-delete   ->DELETE    '/productos/:id'         **     PRIVADA     **
-    putProductoPrice,               //mispublicaciones-put      ->PUT       '/productos/:id'         **     PRIVADA     **
+    putProduct,                     //mispublicaciones-put      ->PUT       '/productos/:id'         **     PRIVADA     **
     putLikes,                       //likes-id-put              ->PUT       '/likes/:id'             **     PRIVADA     **
-    getLikes                        //likes-id-get              ->GET       '/likes/:id'             **     publica
+    getLikes,                       //likes-id-get              ->GET       '/likes/:id'             **     publica
+    postMisCompras,
+    getMisCompras
 }

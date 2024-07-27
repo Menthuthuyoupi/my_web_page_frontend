@@ -24,7 +24,8 @@ const HomeBasicProducts = ({ categoria }) => {
             {
               productosLimit4.map(producto => (
                 <Col className='d-flex justify-content-center' key={producto.id}>
-                  <BasicProductInfo imagen={producto.url_imagen} nombre={producto.nombre} categoria={categoria} precio={producto.precio} id={producto.id} />
+                  <BasicProductInfo imagen={producto.url_imagen} nombre={producto.nombre} categoria={categoria} precio={producto.precio}
+                   id={producto.id} id_usuario={producto.id_usuario} descripcion={producto.descripcion} />
                 </Col>
               ))
             }

@@ -21,7 +21,7 @@ const FormSearch = () => {
 
     const validar = (e) => {
         if(e.key === 'Enter'){
-            e.preventDefault(true)
+            e.preventDefault()
             goSearch()
         }
     }

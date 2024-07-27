@@ -25,7 +25,8 @@ const MyProductInfo = ({producto}) => {
             ${producto.precio}
           </Card.Text>
         </Card.Body>
-        <PutButton id={producto.href} precio={producto.precio} />        
+        <PutButton id={producto.href} cantidad={producto.cantidad}
+         descripcion={producto.descripcion} url_imagen={producto.imagen} nombre={producto.nombre} />        
         <DeleteButton id={producto.href} />
       </Card>
     )

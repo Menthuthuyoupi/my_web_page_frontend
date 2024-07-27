@@ -35,14 +35,14 @@ const Footer = () => {
             
                 <div className='px-5 d-flex justify-content-center align-items-center col-md-12 col-lg-6 col-xl-6 col-xxl-6'>
                     <p className='p-0 m-0'>Síguenos</p>
-                    <a className='siguenos' href='https://www.facebook.com/DragonGaming' target='_blank'><FacebookIcon className='ms-2' fontSize="large"/></a>
-                    <a className='siguenos' href='https://x.com/DragonGaming' target='_blank'><XIcon className='ms-2' fontSize="large"/></a>
-                    <a className='siguenos' href='https://www.instagram.com/DragonGaming' target='_blank'><InstagramIcon className='ms-2' fontSize="large"/></a>
-                    <a className='siguenos' href='https://www.youtube.com/DragonGaming' target='_blank'><YouTubeIcon className='ms-2' fontSize="large"/></a>                
+                    <a className='siguenos' href='https://www.facebook.com/' target='_blank'><FacebookIcon className='ms-2' fontSize="large"/></a>
+                    <a className='siguenos' href='https://x.com/' target='_blank'><XIcon className='ms-2' fontSize="large"/></a>
+                    <a className='siguenos' href='https://www.instagram.com/' target='_blank'><InstagramIcon className='ms-2' fontSize="large"/></a>
+                    <a className='siguenos' href='https://www.youtube.com/' target='_blank'><YouTubeIcon className='ms-2' fontSize="large"/></a>                
                 </div>
             </Container>
             <Container fluid className='text-white py-2'>
-                copyright <CopyrightIcon /> 2024 La tienda tecnológica DragonGaming.com Todos los derechos reservados
+                copyright <CopyrightIcon /> 2024 La tienda tecnológica Mercadodelpc.com Todos los derechos reservados
             </Container>
         </Container>
     )

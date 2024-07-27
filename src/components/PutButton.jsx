@@ -6,17 +6,21 @@ import { LoggedInContext } from '../context/LoggedInContext';
 import { Button, Container, Form } from 'react-bootstrap'
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
-import { putProductoPrice } from '../productos';
+import { putProduct } from '../productos';
 import { valideKey } from '../validacionInput';
 
-const PutButton = ({id}) => {
+const PutButton = ({id, cantidad, descripcion, url_imagen, nombre}) => {
   const [precio, setPrecio] = useState('')
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
 
   const modificarProducto = () => {
-    putProductoPrice(id, precio, loggedIn.token)
-    setPrecio('')
+    const confirmar = confirm('Estas segudo de cambiar el precio de tu producto?')
+    if(confirmar){
+      putProduct(id, precio, cantidad+' default', descripcion, url_imagen, nombre, loggedIn.token)
+      setPrecio('')
+    }
   }
+  
   return (
     <Container className='mb-2 d-flex px-0'>
       <Button variant="outline-warning" onClick={() => modificarProducto()}>

@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { Card, Button, Container } from 'react-bootstrap'
 
-import AddButton from './AddButton'
+import AddProductButton from './AddProductButton'
 
-const BasicProductInfo = ({imagen,nombre,categoria,precio, id}) => {
+const BasicProductInfo = ({imagen,nombre,categoria,precio, id, id_usuario, descripcion}) => {
   const navigate = useNavigate()
   const productoID = () => {
     navigate(`/productos/${id}`)
@@ -38,7 +38,7 @@ const BasicProductInfo = ({imagen,nombre,categoria,precio, id}) => {
         </Container>
       </Card.Body>
       <Card.Body>
-        <AddButton imagen={imagen} precio={precio} id={id} nombre={nombre}/>
+        <AddProductButton imagen={imagen} precio={precio} id={id} nombre={nombre} id_usuario={id_usuario} descripcion={descripcion}/>
       </Card.Body>
     </Card>
   )

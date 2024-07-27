@@ -1,10 +1,20 @@
 import React from 'react'
-
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 
 import HomeBasicProducts from '../components/HomeBasicProducts'
 
 const HomePage = () => {
+  const navigate = useNavigate()
+  const home = () => {
+    navigate('/')
+  }
+
+  useEffect(() =>{
+        home()
+  },[])
+
   return (
     <Container className='px-0 mx-0' fluid style={{minHeight:'75vh'}}>
       <Container fluid className='px-0 mx-0'>

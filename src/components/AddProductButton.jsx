@@ -8,10 +8,10 @@ import { PedidoContext } from '../context/PedidoContext'
 import { TotalPayContext } from '../context/TotalPayContext'
 import { LoggedInContext } from '../context/LoggedInContext';
 
-const AddButton = ({imagen, precio, id, nombre}) => {
+const AddProductButton = ({imagen, precio, id, nombre, id_usuario, descripcion}) => {
     const { pedido, setPedido } = useContext(PedidoContext)
     const { total, setTotal } = useContext(TotalPayContext)
-    const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+    const { loggedIn } = useContext(LoggedInContext)
 
     const addProduct = () => {
         
@@ -21,9 +21,9 @@ const AddButton = ({imagen, precio, id, nombre}) => {
                 estaDentro = true
             }
         })
-
-        if(!estaDentro){
-            setPedido([...pedido, {imagen:imagen, precio:precio, id:id, nombre: nombre}])
+        
+        if(!estaDentro && loggedIn.id !== id_usuario){
+            setPedido([...pedido, {imagen:imagen, precio:precio, id:id, nombre: nombre, descripcion: descripcion, cantidad: 1}])
             setTotal(total+precio)
         }
     }
@@ -35,4 +35,4 @@ const AddButton = ({imagen, precio, id, nombre}) => {
   )
 }
 
-export default AddButton
+export default AddProductButton

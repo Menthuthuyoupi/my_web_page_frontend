@@ -8,7 +8,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import RecommendIcon from '@mui/icons-material/Recommend';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
-import AddButton from '../components/AddButton';
+import AddProductButton from '../components/AddProductButton';
 
 import { LoggedInContext } from '../context/LoggedInContext';
 
@@ -72,7 +72,8 @@ const ProductsPage = () => {
                 </Col>
                 <Col>
                     <Container className='my-2' style={{maxWidth:'400px'}}>
-                        <AddButton imagen={producto.imagen} precio={producto.precio} id={id}/>
+                        <AddProductButton imagen={producto.url_imagen} precio={producto.precio} id={id} nombre={producto.nombre} id_usuario={producto.id_usuario}
+                        descripcion={producto.descripcion}/>
                     </Container>
                 </Col>   
             </Row>
