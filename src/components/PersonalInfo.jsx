@@ -14,7 +14,7 @@ import { valideKey } from '../validacionInput';
 import { putYourInfo } from '../users';
 
 const PersonalInfo = () => {
-    const {loggedIn, setLoggedIn } = useContext(LoggedInContext)
+    const {loggedIn, login } = useContext(LoggedInContext)
     
     const [nombre, setNombre] = useState(loggedIn.nombre)
     const [prefijo, setPrefijo] = useState(loggedIn.prefijo)
@@ -24,7 +24,7 @@ const PersonalInfo = () => {
     const actualizarDatos = () => {
         if(nombre && prefijo && telefono && birthdate){
             putYourInfo(loggedIn.id, nombre, prefijo, telefono, birthdate, setNombre, setPrefijo, setTelefono, setBirthdate, loggedIn.token)
-            setLoggedIn({ ... loggedIn, nombre: nombre, prefijo: prefijo, telefono: telefono, birthdate: birthdate})
+            login({ ... loggedIn, nombre: nombre, prefijo: prefijo, telefono: telefono, birthdate: birthdate})
         }
     }
     return (
@@ -66,7 +66,7 @@ const PersonalInfo = () => {
             <InputGroup.Text  id="basic-addon3" style={{borderRadius:' 5px 0px 0px 5px'}}>
                 <CakeIcon />
             </InputGroup.Text> 
-            <Form.Control value={birthdate.split('T')[0]} onChange={({target})=> setBirthdate(target.value)} type='date'
+            <Form.Control value={birthdate ? birthdate.split('T')[0] : null} onChange={({target})=> setBirthdate(target.value)} type='date'
             style={{borderRadius:' 0px 5px 5px 0px', maxWidth:'700px'}}/>           
         </div>
 

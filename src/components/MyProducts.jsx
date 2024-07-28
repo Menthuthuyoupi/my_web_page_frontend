@@ -4,7 +4,7 @@ import MyProductInfo from './MyProductInfo'
 
 import { Container } from 'react-bootstrap'
 
-const MyProducts = ({productos, id_usuario, setProductos, setTotalPages, setNext, setPrevious, setTotal, page, limit, order}) => {
+const MyProducts = ({productos}) => {
 
   return (
     <Container fluid className='d-flex justify-content-center row'>      

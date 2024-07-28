@@ -12,7 +12,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 const ProfileStatus = () => {
-    const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+    const { loggedIn, logout } = useContext(LoggedInContext)
     const { setPedido } = useContext(PedidoContext)
     const { setTotal } = useContext(TotalPayContext)
 
@@ -20,8 +20,8 @@ const ProfileStatus = () => {
 
     const navigate = useNavigate()
 
-    const logout = () => {
-        setLoggedIn({email:'', photo:'', id:'notExist', logged: false, nombre:'', prefijo: '', telefono: 11111111, birthdate: '1900-01-01'})
+    const logoutSession = () => {
+        logout()
         setPedido([])
         setTotal(0)
         navigate('/')
@@ -35,7 +35,7 @@ const ProfileStatus = () => {
                 <NavLink to="/perfil/pagar" className={setActiveClass} style={{padding:'8px 8px 0px 8px'}}>Pagar Pedidos<ShoppingCartIcon /></NavLink>
                 <NavLink to="/perfil/mispublicaciones" className={setActiveClass} style={{padding:'8px 8px 0px 8px'}}>Mis Publicaciones</NavLink>
                 <NavLink to="/perfil/publicar" className={setActiveClass} style={{padding:'8px 8px 0px 8px'}}>Publicar</NavLink>
-                <Button variant="outline-danger" onClick={logout} style={{height:'40px'}}>
+                <Button variant="outline-danger" onClick={logoutSession} style={{height:'40px'}}>
                     <NavLink to="/" className={setActiveClass} style={{padding:'8px 8px 0px 8px'}}>
                         <LogoutIcon fontSize='small'/> 
                     </NavLink>

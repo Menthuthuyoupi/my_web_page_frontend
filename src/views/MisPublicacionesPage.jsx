@@ -10,6 +10,8 @@ import MyProducts from '../components/MyProducts';
 import OrderBySelect from '../components/OrderBySelect';
 import LimitSelect from '../components/LimitSelect';
 
+import NorthIcon from '@mui/icons-material/North';
+
 import { getProductosIdUsuario } from '../productos';
 
 const MisPublicacionesPage = () => {
@@ -22,7 +24,7 @@ const MisPublicacionesPage = () => {
     const [limit, setLimit] = useState(10)
     const [total, setTotal] = useState(0)
 
-    const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+    const { loggedIn } = useContext(LoggedInContext)
   
     useEffect(() => {
         getProductosIdUsuario(page, order, limit, loggedIn.id, setProductos, setTotalPages, setNext, setPrevious, setTotal)
@@ -46,11 +48,10 @@ const MisPublicacionesPage = () => {
                 </Container>
               </Container>
   
-              <MyProducts productos={productos} id_usuario={loggedIn.id} setProductos={setProductos} setTotalPages={setTotalPages}
-              setNext={setNext} setPrevious={setPrevious} setTotal={setTotal} page={page} limit={limit} order={order} />
+              <MyProducts productos={productos} />
       
               <Container fluid className='d-flex justify-content-end py-2 mt-2 pe-5'>
-                <NavNextPrevious page={page} setPage={setPage} next={next} previous={previous} total={total} limit={limit} /> 
+                <NavNextPrevious page={page} setPage={setPage} next={next} previous={previous} total={total} limit={limit} />
               </Container>
             </Container>
             :
@@ -58,6 +59,7 @@ const MisPublicacionesPage = () => {
               <h2>No tienes productos a la venta</h2>
             </Container>
         }
+        <a className='d-flex justify-content-start' style={{color:'black'}} href='#'><NorthIcon fontSize='large'/>SUBIR</a>
       </Container>
     )
 }

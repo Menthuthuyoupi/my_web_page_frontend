@@ -12,7 +12,7 @@ import ProfileStatus from './ProfileStatus'
 
 const Navigation = () => {
   const setActiveClass = ({ isActive }) => ( isActive ? "active" : "noActive" )
-  const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+  const { loggedIn } = useContext(LoggedInContext)
   return (
     <Navbar className="bg-dark position-relative navHeight"> 
       <Container fluid className='bg-dark position-fixed navHeight'>

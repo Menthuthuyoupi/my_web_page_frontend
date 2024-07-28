@@ -1,19 +1,12 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+
 import { Container } from 'react-bootstrap'
 
 import HomeBasicProducts from '../components/HomeBasicProducts'
 
-const HomePage = () => {
-  const navigate = useNavigate()
-  const home = () => {
-    navigate('/')
-  }
+import NorthIcon from '@mui/icons-material/North';
 
-  useEffect(() =>{
-        home()
-  },[])
+const HomePage = () => {
 
   return (
     <Container className='px-0 mx-0' fluid style={{minHeight:'75vh'}}>
@@ -44,6 +37,9 @@ const HomePage = () => {
           <h2 className='text-start'>Placas Madre</h2>
         </Container>
         <HomeBasicProducts categoria={'placa madre'} />
+      </Container>
+      <Container>
+        <a className='d-flex justify-content-start' style={{color:'black'}} href='#'><NorthIcon fontSize='large'/>SUBIR</a>
       </Container>
     </Container>
   )

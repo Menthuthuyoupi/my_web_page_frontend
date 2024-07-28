@@ -4,6 +4,8 @@ import { useContext } from 'react'
 
 import { LoggedInContext } from './context/LoggedInContext'
 
+import ScrollToTop from './components/ScrollToTop'
+
 import Navigation from './components/Navigation'
 
 import HomePage from './views/HomePage'
@@ -30,8 +32,10 @@ import Footer from './components/Footer'
 
 function App() {
   const { loggedIn } = useContext(LoggedInContext)
+
   return (
     <>
+      <ScrollToTop />
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -48,18 +52,18 @@ function App() {
         
         <Route path="/search" element={<SearchPage />} />
 
-        <Route path="/procesadores" element={<CategoriasPage categoria={"procesador"} />} />
-        <Route path="/tarjetadevideo" element={<CategoriasPage categoria={"tarjeta de video"} />} />
-        <Route path="/placamadre" element={<CategoriasPage categoria={"placa madre"} />} />
-        <Route path="/ram" element={<CategoriasPage categoria={"ram"} />} />
-        <Route path="/discoduro" element={<CategoriasPage categoria={"disco duro"} />} />
-        <Route path="/gabinetes" element={<CategoriasPage categoria={"gabinete"} />} />
-        <Route path="/fuentedepoder" element={<CategoriasPage categoria={"fuente de poder"} />} />
+        <Route path="/procesadores" element={<CategoriasPage categoria={"procesador"} endpoint={"procesadores"} />} />
+        <Route path="/tarjetadevideo" element={<CategoriasPage categoria={"tarjeta de video"} endpoint={"tarjetadevideo"}/>} />
+        <Route path="/placamadre" element={<CategoriasPage categoria={"placa madre"} endpoint={"placamadre"}/>} />
+        <Route path="/ram" element={<CategoriasPage categoria={"ram"} endpoint={"ram"}/>} />
+        <Route path="/discoduro" element={<CategoriasPage categoria={"disco duro"} endpoint={"discoduro"}/>} />
+        <Route path="/gabinetes" element={<CategoriasPage categoria={"gabinete"} endpoint={"gabinetes"}/>} />
+        <Route path="/fuentedepoder" element={<CategoriasPage categoria={"fuente de poder"} endpoint={"fuentedepoder"}/>} />
 
-        <Route path="/teclados" element={<CategoriasPage categoria={"teclado"} />} />
-        <Route path="/mouses" element={<CategoriasPage categoria={"mouse"} />} />
-        <Route path="/pantallas" element={<CategoriasPage categoria={"pantalla"} />} />
-        <Route path="/audifonos" element={<CategoriasPage categoria={"audifono"} />} />
+        <Route path="/teclados" element={<CategoriasPage categoria={"teclado"} endpoint={"teclados"}/>} />
+        <Route path="/mouses" element={<CategoriasPage categoria={"mouse"} endpoint={"mouses"}/>} />
+        <Route path="/pantallas" element={<CategoriasPage categoria={"pantalla"} endpoint={"pantallas"}/>} />
+        <Route path="/audifonos" element={<CategoriasPage categoria={"audifono"} endpoint={"audifonos"}/>} />
 
         <Route path="/productos/:id" element={<ProductsPage />} />
 

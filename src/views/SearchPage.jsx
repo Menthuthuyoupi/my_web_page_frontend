@@ -11,6 +11,8 @@ import CategoryProducts from '../components/CategoryProducts';
 import OrderBySelect from '../components/OrderBySelect';
 import LimitSelect from '../components/LimitSelect';
 
+import NorthIcon from '@mui/icons-material/North';
+
 import { getProductosSearch } from '../productos';
 
 const SearchPage = () => {
@@ -56,9 +58,10 @@ const SearchPage = () => {
 
             <CategoryProducts productos={productos} />
       
-            <Container fluid className='d-flex justify-content-end py-2 mt-2 pe-5'>
-              <NavNextPrevious page={page} setPage={setPage} next={next} previous={previous} total={total} limit={limit} /> 
-            </Container>         
+            <Container fluid className='d-flex justify-content-between py-2 mt-2 pe-5'>
+              <a className='d-flex justify-content-start' style={{color:'black'}} href='#'><NorthIcon fontSize='large'/>SUBIR</a>
+              <NavNextPrevious page={page} setPage={setPage} next={next} previous={previous} total={total} limit={limit} />
+            </Container>       
           </Container>     
       }    
     </>

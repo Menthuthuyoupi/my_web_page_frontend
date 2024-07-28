@@ -8,11 +8,12 @@ import { Container, Button} from 'react-bootstrap';
 import { deleteYourAcc } from '../users';
 
 const DeleteYourAcc = () => {
-    const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+    const { loggedIn, setLoggedIn, logout } = useContext(LoggedInContext)
 
     const eliminarCuenta = () => {
       const desicion = confirm('estas seguro?')
       if(desicion){
+        logout()
         deleteYourAcc(loggedIn.id, loggedIn.token, setLoggedIn)
       }
     }

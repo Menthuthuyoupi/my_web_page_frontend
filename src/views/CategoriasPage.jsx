@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap'
 
@@ -10,21 +11,34 @@ import LimitSelect from '../components/LimitSelect';
 
 import { getProductos } from '../productos';
 
+import NorthIcon from '@mui/icons-material/North';
 
-const CategoriasPage = ({categoria}) => {
+const CategoriasPage = ({categoria, endpoint}) => {
     const [page, setPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
     const [productos, setProductos] = useState([])
     const [next, setNext] = useState(null)
     const [previous, setPrevious] = useState(null)
     const [order, setOrder] = useState("ASC")
-    const [ limit, setLimit] = useState(10)
+    const [limit, setLimit] = useState(10)
     const [total, setTotal] = useState(0)
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      if(order !== "ASC" || limit !== 10 || page !== 1){
+        navigate(`/${endpoint}?order=${order}&limit=${limit}&page=${page}`)
+      }
+    }, [order,limit,page])
   
     useEffect(() => {
       getProductos(categoria, page, order, limit, setProductos, setTotalPages, setNext, setPrevious, setTotal)
     }, [page, order, limit, categoria])
-  
+
+    useEffect(() => {
+      setPage(1)
+    }, [categoria])
+
     return (
       <>
         {
@@ -49,9 +63,10 @@ const CategoriasPage = ({categoria}) => {
   
               <CategoryProducts productos={productos} />
         
-              <Container fluid className='d-flex justify-content-end py-2 mt-2 ps-0 pe-5'>
-                <NavNextPrevious page={page} setPage={setPage} next={next} previous={previous} total={total} limit={limit} /> 
-              </Container>         
+              <Container fluid className='d-flex justify-content-between py-2 mt-2 ps-0 pe-5'>
+                <a className='d-flex justify-content-start' style={{color:'black'}} href='#'><NorthIcon fontSize='large'/>SUBIR</a>
+                <NavNextPrevious page={page} setPage={setPage} next={next} previous={previous} total={total} limit={limit} />
+              </Container>
             </Container>     
         }    
       </>

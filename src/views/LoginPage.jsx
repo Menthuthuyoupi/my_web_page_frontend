@@ -17,7 +17,7 @@ const LoginPage = () => {
   const [ errorPassword, setErrorPassword] = useState(false)
   const [alerta, setAlerta] = useState('')
 
-  const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+  const { login } = useContext(LoggedInContext)
 
   const logearse = async () =>{
     email.length < 10 ? (setErrorEmail(true),setAlerta('')) : setErrorEmail(false)
@@ -25,7 +25,7 @@ const LoginPage = () => {
 
     if(email.length > 10 && password.length > 3){
       const userLogged = await postLogin(email, password)
-      setLoggedIn(userLogged)  
+      login(userLogged)  
       setAlerta(userLogged.message)
     }    
   }

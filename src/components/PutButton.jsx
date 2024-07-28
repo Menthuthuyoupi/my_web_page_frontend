@@ -11,7 +11,7 @@ import { valideKey } from '../validacionInput';
 
 const PutButton = ({id, cantidad, descripcion, url_imagen, nombre}) => {
   const [precio, setPrecio] = useState('')
-  const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+  const { loggedIn } = useContext(LoggedInContext)
 
   const modificarProducto = () => {
     const confirmar = confirm('Estas segudo de cambiar el precio de tu producto?')
