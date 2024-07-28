@@ -22,14 +22,14 @@ const AddProductButton = ({imagen, precio, id, nombre, id_usuario, descripcion})
             }
         })
         
-        if(!estaDentro && loggedIn.id !== id_usuario){
+        if(!estaDentro && loggedIn.id !== id_usuario && loggedIn.logged){
             setPedido([...pedido, {imagen:imagen, precio:precio, id:id, nombre: nombre, descripcion: descripcion, cantidad: 1}])
             setTotal(total+precio)
         }
     }
     return (
-        <Button className={`addProduct page-item me-1 ${loggedIn.id === 'notExist' ? "aria-disabled" : ""}`} variant="dark" onClick={addProduct} 
-        style={loggedIn.id === 'notExist' ? { cursor: "not-allowed" } : { cursor: "pointer" }}>
+        <Button className={`addProduct page-item me-1 ${loggedIn.id ? "" : "aria-disabled"}`} variant="dark" onClick={addProduct} 
+        style={loggedIn.id ? { cursor: "pointer" }  : { cursor: "not-allowed" }}>
             <AddShoppingCartIcon /> Agregar al carrito
         </Button>
   )

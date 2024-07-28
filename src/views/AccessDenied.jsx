@@ -9,6 +9,23 @@ import { Container } from 'react-bootstrap'
 const AccessDenied = () => {
   const { loggedIn } = useContext(LoggedInContext)
 
+  const navigate = useNavigate()
+  const denegado = () => {
+    navigate('/accesodenegado')
+  }
+
+  const toLocation = () => {
+    navigate(`/perfil`)
+  }
+
+  useEffect(() =>{
+    if(!loggedIn.logged){
+      denegado()
+    }else{
+      toLocation()
+    }
+  },[loggedIn.logged])
+
   return (
     <Container fluid className='publicarBox d-flex justify-content-center align-items-center'>
       {

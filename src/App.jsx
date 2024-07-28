@@ -44,7 +44,6 @@ function App() {
         <Route path="/login" element={loggedIn.logged ? <HomePage /> : <LoginPage />} />
 
         <Route path="/perfil" element={loggedIn.logged ? <PerfilPage /> : <AccessDenied />} />
-
         <Route path="/perfil/pagar" element={loggedIn.logged ? <PayPage /> : <AccessDenied />} />
         <Route path="/perfil/mispublicaciones" element={loggedIn.logged ? <MisPublicacionesPage /> : <AccessDenied />} />
         <Route path="/perfil/publicar" element={loggedIn.logged ? <PublicarPage /> : <AccessDenied />} />
